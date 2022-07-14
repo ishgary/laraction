@@ -38,7 +38,7 @@
     <div class="container">
         <div class="row">
           <div class="col-6">
-            <div class="text-left">Already a user?</div>
+            <div class="text-left">Not registered yet?</div>
           </div>
           <div class="col-6">
             <a href="#">Register here!</a>

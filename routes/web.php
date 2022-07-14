@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\registrationController;
 use App\Http\Controllers\loginPage;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,4 +16,4 @@ use App\Http\Controllers\loginPage;
 */
 
 Route::get('/register', [registrationController::class, 'index' ]);
-Route::get('/login', [registrationController::class, 'index' ]);
+Route::get('/login', [loginPage::class, 'index' ]);
