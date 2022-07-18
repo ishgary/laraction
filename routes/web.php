@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\registrationController;
-use App\Http\Controllers\loginPage;
+use App\Models\Users;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,5 +15,16 @@ use App\Http\Controllers\loginPage;
 |
 */
 
-Route::get('/register', [registrationController::class, 'index' ]);
-Route::get('/login', [loginPage::class, 'index' ]);
+Route::get('/register', [registrationController::class, 'registerShow' ]);
+Route::post('/register', [registrationController::class,'register' ]);
+
+Route::get('/login', [registrationController::class, 'loginShow']);
+Route::get('/', function(){
+    return view('welcome');
+}
+);
+
+
+// Route::get('/users',function(){
+//     $users = Users::all();
+// });

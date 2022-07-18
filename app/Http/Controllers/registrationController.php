@@ -3,11 +3,34 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Users;
 
 class registrationController extends Controller
 {
-    public function index()
+    public function registerShow()
     {
         return view('form');
+    }
+    public function loginShow()
+    {
+        return view('login');
+    }
+    public function register(Request $request)
+    {
+        $request->validate(
+            [
+                'name' => 'required',
+                'email' => 'required|email',
+                'phone' => 'required',
+                'pass' => 'required',
+            ]
+        );
+        $user=new Users;
+        $user->name=$request->name;
+        $user->phone=$request->phone; 
+        $user->email=$request->email;
+        $user->pass=$request->pass;
+        $user->save();
+        return redirect()->route('login');
     }
 }
