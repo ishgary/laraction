@@ -31,6 +31,11 @@ class registrationController extends Controller
         $user->email=$request->email;
         $user->pass=$request->pass;
         $user->save();
-        return redirect()->route('login');
+        return redirect('customer-view');
+    }
+    public function view(){
+        $people = Users::all();
+        $data = compact('people');
+        return view('customer-view')->with($data);
     }
 }

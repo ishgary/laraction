@@ -19,10 +19,11 @@ Route::get('/register', [registrationController::class, 'registerShow' ]);
 Route::post('/register', [registrationController::class,'register' ]);
 
 Route::get('/login', [registrationController::class, 'loginShow']);
-Route::get('/', function(){
+Route::get('/welcome', function(){
     return view('welcome');
 }
 );
+Route::get('/customer/view',[registrationController::class, 'view']);
 
 
 // Route::get('/users',function(){

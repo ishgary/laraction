@@ -1,4 +1,4 @@
-<!-- <!doctype html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -10,10 +10,10 @@
     <div class="container">
         <h3 class="text-center m-5">Welcome</h3>
         <br><br>
-        <h4 class="bg-info text-white p-2 rounded"> Hey there! Welcome home, {{ $LoggedUserInfo['name'] }} !</h4>
+        <h4 class="bg-info text-white p-2 rounded"> Hey there! Welcome home,  !</h4>
         <br>
         <a href="/logout" class="btn btn-danger w-25">Logout</a> 
         <a href="/users" class="btn btn-primary w-25">User Listing</a>
     </div>
   </body>
-</html>  -->
+</html> 
