@@ -56,7 +56,7 @@ class registrationController extends Controller
         {
             if($request->password == $userData->password)
             {
-                $request->session()->put('LoggedUser',$userData->id);
+                $request->session()->put('logged_user',$userData->id);
                 return redirect('/welcome');
             }
             else
@@ -65,15 +65,20 @@ class registrationController extends Controller
             }
         }
     }
-    public function userLogin(request $request)
-    {
-        $data= $request->input('user');
-        $request->session()->put('user',$data);
-        return redirect('welcome');
-    }
+    // public function userLogin(request $request)
+    // {
+    //     $data= $request->input('user');
+    //     $request->session()->put('user',$data);
+    //     return redirect('welcome');
+    // }
     function dashboard()
     {
         $data = ['LoggedUserInfo'=>Users::where('id','=',session('logged_user'))->first()];
-        return view('/welcome',$data);
+        return view('welcome',$data);
+    }
+    function show()
+    {
+        $user_data = Users::all();
+        return view('Customer-view', ['members' => $user_data]);
     }
 }

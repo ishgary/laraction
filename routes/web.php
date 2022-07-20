@@ -26,7 +26,7 @@ Route::get('/welcome', function(){
 Route::post('/login', [registrationController::class, 'log']);
 
 Route::get('/customer/view',[registrationController::class, 'view']);
-Route::group(['middleware'=>['auth.check']],function(){
-    Route::get('/', [AuthController::class,'dashboard'])->name('/'); 
-    Route::get('users',[AuthController::class, 'show'])->name('users');
-});
+// Route::group(['middleware'=>['authware']],function(){
+//     Route::get('/welcome', [registrationController::class,'dashboard'])->name('/welcome'); 
+//     Route::get('Customer-view',[registrationController::class, 'show'])->name('Customer-view');
+// });
