@@ -21,11 +21,12 @@ Route::post('/register', [registrationController::class,'register' ]);
 Route::get('/login', [registrationController::class, 'loginShow']);
 Route::get('/welcome', function(){
     return view('welcome');
-}
-);
+});
+
+Route::post('/login', [registrationController::class, 'log']);
+
 Route::get('/customer/view',[registrationController::class, 'view']);
-
-
-// Route::get('/users',function(){
-//     $users = Users::all();
-// });
+Route::group(['middleware'=>['auth.check']],function(){
+    Route::get('/', [AuthController::class,'dashboard'])->name('/'); 
+    Route::get('users',[AuthController::class, 'show'])->name('users');
+});

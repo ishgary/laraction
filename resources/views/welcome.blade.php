@@ -10,10 +10,10 @@
     <div class="container">
         <h3 class="text-center m-5">Welcome</h3>
         <br><br>
-        <h4 class="bg-info text-white p-2 rounded"> Hey there! Welcome home,  !</h4>
+        <h4 class=""> Hey there! Now you have landed to the admin page</h4>
         <br>
-        <a href="/logout" class="btn btn-danger w-25">Logout</a> 
-        <a href="/users" class="btn btn-primary w-25">User Listing</a>
+        <a href="/login" class="btn btn-danger ">Logout</a> 
+        <a href="/customer/view" class="btn btn-primary ">User Listing</a>
     </div>
   </body>
 </html> 

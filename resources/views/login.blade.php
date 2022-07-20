@@ -8,7 +8,8 @@
   </head>
   <body>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-    <form method="post">
+    <form method="post" action="">
+      @csrf
         <h1 class="text-center"><u> Login Form </u></h1>
         <div class="container">
             <div class="form-group">
@@ -22,6 +23,7 @@
                   placeholder=""
                   aria-describedby="HelpId"
                 />
+                <span style="color: red" > @error('email'){{$message}}@enderror</span>
             </div>
             <div class="form-group">
                 <label for="">Password</label>
@@ -33,6 +35,7 @@
                   placeholder=""
                   aria-describedby="HelpId"
                 />
+                <span style="color: red" > @error('pass'){{$message}}@enderror</span>
             </div>
             <button type="submit" class="btn btn-primary">Login</button>
         </div>
