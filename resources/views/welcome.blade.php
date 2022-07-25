@@ -14,6 +14,9 @@
         <br>
         <a href="/login" class="btn btn-danger ">Logout</a> 
         <a href="/customer/view" class="btn btn-primary ">User Listing</a>
+        <a name="" href="/createTrans" class="btn btn-primary" href="#" role="button">Create transaction</a>
+        <a name="" href="#" class="btn btn-primary" href="#" role="button">View transaction</a>
     </div>
+
   </body>
 </html> 

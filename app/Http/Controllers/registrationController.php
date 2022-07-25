@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Users;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redis;
+use App\Models\tran;
+use Illuminate\Support\Facades\Redirect;
 
 class registrationController extends Controller
 {
@@ -17,26 +19,13 @@ class registrationController extends Controller
     {
         return view('login');
     }
-    public function register(Request $request)
+    public function register()
     {
-        $request->validate(
-            [
-                'name' => 'required',
-                'email' => 'required|email',
-                'phone' => 'required',
-                'pass' => 'required | min:5 ',
-            ]
-        );
-        $user=new Users;
-        $user->name=$request->name;
-        $user->phone=$request->phone; 
-        $user->email=$request->email;
-        $user->pass=$request->pass;
-        $user->save();
         return redirect('welcome');
+        
     }
     public function view(){
-        $people = Users::all();
+        $people = Users::latest('updated_at')->get();
         $data = compact('people');
         return view('customer-view')->with($data);
     }
@@ -65,20 +54,47 @@ class registrationController extends Controller
             }
         }
     }
-    // public function userLogin(request $request)
-    // {
-    //     $data= $request->input('user');
-    //     $request->session()->put('user',$data);
-    //     return redirect('welcome');
-    // }
-    function dashboard()
+    
+    public function dashboard()
     {
         $data = ['LoggedUserInfo'=>Users::where('id','=',session('logged_user'))->first()];
         return view('welcome',$data);
     }
-    function show()
+    public function show()
     {
-        $user_data = Users::all();
+        $user_data = Users::latest('updated_at')->get();
         return view('Customer-view', ['members' => $user_data]);
+    }
+    public function transFill(Request $req){
+        // $req->validate([
+        //     'title' => "required",
+        //     'date' => "required",
+        //     'paid_by_to' => "required",
+        //     'amount' => "required",
+        //     'quantity' => "required",
+        //     'unit' => "required",
+        //     'total' => "required",
+        //     'type' => "required",
+        //     'status' => "required",
+        //     'utr' => "required",
+        //     'project' => "required",                 
+        //     'comment' => "required",
+        // ]);
+        
+        $user=new tran;
+        $user->title=$req->title;
+        $user->date=$req->date; 
+        $user->paid_by_to=$req->paid_by_to;
+        $user->amount=$req->amount;
+        $user->quantity=$req->quantity;
+        $user->unit=$req->unit;
+        $user->total=$req->total;
+        $user->type=$req->type;
+        $user->status=$req->status;
+        $user->utr=$req->utr;
+        $user->project=$req->project;
+        $user->comment=$req->comment;
+        $user->save();
+        return redirect('welcome');
     }
 }

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\registrationController;
 use App\Models\Users;
+use App\Models\tran;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,19 +15,18 @@ use App\Models\Users;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/register', [registrationController::class, 'registerShow' ]);
+Route::get('/register', [registrationController::class, 'registerShow']);
 Route::post('/register', [registrationController::class,'register' ]);
 
 Route::get('/login', [registrationController::class, 'loginShow']);
-Route::get('/welcome', function(){
-    return view('welcome');
-});
+Route::view('/createTrans','createTrans');
+Route::view('/updateTrans','updateTrans');
+Route::post("/createTrans", [registrationController::class, 'transFill']);
 
 Route::post('/login', [registrationController::class, 'log']);
 
 Route::get('/customer/view',[registrationController::class, 'view']);
-// Route::group(['middleware'=>['authware']],function(){
-//     Route::get('/welcome', [registrationController::class,'dashboard'])->name('/welcome'); 
-//     Route::get('Customer-view',[registrationController::class, 'show'])->name('Customer-view');
-// });
+Route::group(['middleware'=>['auth.ware']],function(){
+    Route::get('/welcome', [registrationController::class,'dashboard'])->name('/welcome'); 
+    Route::get('Customer-view',[registrationController::class, 'show'])->name('Customer-view');
+});
