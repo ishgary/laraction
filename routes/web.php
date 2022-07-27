@@ -31,6 +31,7 @@ Route::group(['middleware'=>['auth.ware']],function(){
     Route::get('welcome', [registrationController::class,'dashboard'])->name('welcome'); 
     Route::get('customer_view',[registrationController::class, 'show'])->name('customer_view');
     Route::view('/createTrans','createTrans')->name('createTrans');
+    Route::get('receipt/{id}', [TransactionController::class,'receipt']);
     Route::get('listTrans',[transactionController::class, 'show'])->name('listTrans');
     Route::get('destroy/{id}',[transactionController::class, 'destroy'])->name('destroy');
     Route::get('edit/{id}',[transactionController::class, 'edit'])->name('edit');
