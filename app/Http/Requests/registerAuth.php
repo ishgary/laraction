@@ -3,7 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Models\Users;
+
 
 class registerAuth extends FormRequest
 {
@@ -14,7 +14,7 @@ class registerAuth extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,7 @@ class registerAuth extends FormRequest
      *
      * @return array<string, mixed>
      */
-    public function rules( $request)
+    public function rules()
     {
         return [
             
@@ -31,13 +31,6 @@ class registerAuth extends FormRequest
                 'phone' => 'required',
                 'pass' => 'required | min:5 ',
             
-        ];
-        $user=new Users;
-        $user->name=$request->name;
-        $user->phone=$request->phone; 
-        $user->email=$request->email;
-        $user->pass=$request->pass;
-        $user->save();
-        
+        ];   
     }
 }

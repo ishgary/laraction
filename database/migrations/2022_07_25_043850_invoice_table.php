@@ -39,6 +39,8 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('tran', function (Blueprint $table) {
+            Schema::drop('tran');
+        });
     }
 };

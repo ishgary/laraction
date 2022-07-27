@@ -18,7 +18,7 @@
         @endif
 
         @csrf
-
+        <input type="hidden" name="id" class="form-control" value={{ $data['id'] }}>
         <div class="row">
             <div class="col-6">
                 <div class="mb-3">
@@ -68,9 +68,9 @@
                     <div class="text-danger">@error('amount') {{ $message }} @enderror</div>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">Unit Name</label>
-                    <input type="text" name="unit_name" class="form-control" value="{{ old('unit_name') }}" required>
-                    <div class="text-danger">@error('unit_name') {{ $message }} @enderror</div>
+                    <label class="form-label">Unit</label>
+                    <input type="text" name="unit" class="form-control" value="{{ old('unit') }}" required>
+                    <div class="text-danger">@error('unit') {{ $message }} @enderror</div>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Status</label>
@@ -95,7 +95,7 @@
         </div>
         <center>
             <button type="submit" class="btn btn-success ">Update Transaction</button>
-            <a href="/" class="btn btn-danger">Home Page</a>
+            <a href="/listTrans" class="btn btn-danger">Back</a>
         </center>
     </form>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
