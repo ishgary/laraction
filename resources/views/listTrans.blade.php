@@ -22,7 +22,7 @@
             <th scope="col">Type</th>
             <th scope="col">Status</th>
             <th scope="col">UTR</th>
-            <!-- <th scope="col">Invoice No.</th> -->
+            <th scope="col">Invoice No.</th>
             <th scope="col">Project</th>
             <th scope="col">Actions</th>
             </tr>
@@ -41,6 +41,7 @@
                     <td>{{$field['type']}}</td>
                     <td>{{$field['status']}}</td>
                     <td>{{$field['utr']}}</td>
+                    <td>{{$field['invoice']}}</td>
                     <td>{{$field['project']}}</td>
                     <td>
                         <a href={{"receipt/".$field['id']}} class="btn btn-primary" >Download PDF</a>

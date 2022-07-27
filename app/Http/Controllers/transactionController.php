@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\TransactionReq;
 use App\Models\tran;
 use Illuminate\Http\Request;
+use PDF;
 
 class transactionController extends Controller
 {
@@ -82,5 +83,16 @@ class transactionController extends Controller
         $data=tran::find($id);
         $data->delete();
         return redirect()->route('listTrans');
+    }
+    public function receipt ($id)
+    {
+        $data = tran::find($id);
+        $trans_data = [
+            'data' => $data,
+        ];
+
+        $pdf = PDF::loadView('receipt', $trans_data);
+
+        return $pdf->download('Invoice.pdf');
     }
 }
