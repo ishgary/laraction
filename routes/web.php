@@ -22,9 +22,9 @@ Route::post('/register', [registrationController::class,'store' ]);
 Route::get('/login', [registrationController::class, 'loginShow']);
 Route::post('edit/{id}',[transactionController::class, 'update'])->name('update');
 
-Route::post("/createTrans", [transactionController::class, 'store']);
 
 Route::post('/login', [registrationController::class, 'log']);
+Route::post("/createTrans", [transactionController::class, 'store']);
 
 Route::get('/customer/view',[registrationController::class, 'view']);
 Route::group(['middleware'=>['auth.ware']],function(){
